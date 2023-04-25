@@ -1,26 +1,10 @@
 function displayTimezone(event) {
-  const selectedTimezone = event.target.value;
-  if (selectedTimezone.length > 0) {
-    if (selectedTimezone === "rome") {
-      let romeTime = moment()
-        .tz("Europe/Rome")
-        .format(`[It is] dddd, MMMM D, YYYY HH:mm A [in Rome,Italy]`);
-      alert(`${romeTime}`);
-    }
-    if (selectedTimezone === "auckland") {
-      let aucklandTime = moment()
-        .tz("Pacific/Auckland")
-        .format(
-          `[It is] dddd, MMMM D, YYYY HH:mm A [in Auckland, New Zealand]`
-        );
-      alert(`${aucklandTime}`);
-    }
-    if (selectedTimezone === "madrid") {
-      let madridTime = moment()
-        .tz("Europe/Madrid")
-        .format(`[It is] dddd, MMMM D, YYYY HH:mm A [in Madrid, Spain]`);
-      alert(`${madridTime}`);
-    }
+  if (event.target.value.length > 0) {
+    let currentTimezone = moment()
+      .tz(event.target.value)
+      .format("dddd, MMMM D, YYYY hh:mm A");
+
+    alert(`It is ${currentTimezone} in ${event.target.value}`);
   }
 }
 let citySelection = document.querySelector(`#timezone-cities`);
